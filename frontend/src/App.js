@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "./App.css";
 
-const API = "/api/todos";
+const API = `${process.env.REACT_APP_API_URL}/api/todos`;
 
 const PRIORITY_CONFIG = {
   high: { label: "High", color: "#ff6b6b", bg: "#fff0f0" },
