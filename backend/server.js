@@ -12,11 +12,8 @@ app.use(express.json());
 // ─── PostgreSQL Connection ────────────────────────────────────────────────────
 // Update these values to match your PostgreSQL setup
 const pool = new Pool({
-  host: process.env.DB_HOST || "localhost",
-  port: process.env.DB_PORT || 5432,
-  database: process.env.DB_NAME || "tododb",
-  user: process.env.DB_USER || "postgres",
-  password: process.env.DB_PASSWORD || "151020",
+  connectionString: process.env.DATABASE_URL || `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
+  ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false,
 });
 
 // ─── Initialize Table ─────────────────────────────────────────────────────────
